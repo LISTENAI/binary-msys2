@@ -1,0 +1,39 @@
+name: test
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: NPM config
+        run: |
+          npm config set //registry-lpm.listenai.com/:_password ${{ secrets.LPM_ADMIN_TOKEN }}
+          npm config set //registry-lpm.listenai.com/:username lpmadmin
+          npm config set //registry-lpm.listenai.com/:email lpm.admin@listenai.com
+          npm config set //registry-lpm.listenai.com/:always-auth true
+          npm config set @binary:registry https://registry-lpm.listenai.com
+
+      - name: Build
+        run: npm install --ignore-scripts && npm run build
+
+      - name: Install binary
+        run: npm install
+
+      - name: Test
+        run: npm test

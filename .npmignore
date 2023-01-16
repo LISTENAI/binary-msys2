@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+
+/src
+/binary
+
+.vscode
+
+.github
+
+README.md
+jest.config.js
+/test

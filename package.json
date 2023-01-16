@@ -1,0 +1,33 @@
+{
+  "name": "@binary/msys2",
+  "version": "1.0.20220319",
+  "description": "MSYS2 is a collection of tools and libraries providing you with an easy-to-use environment for building, installing and running native Windows softwar",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "publishConfig": {
+    "registry": "https://registry-lpm.listenai.com"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest",
+    "prepublishOnly": "rm -rf lib && npm run build",
+    "install": "node lib/install.js"
+  },
+  "author": "xryu <xryu@listenai.com>",
+  "maintainers": [
+    "xryu <xryu@listenai.com>",
+    "xychen <xychen@listenai.com"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@binary/type": "^1.0.4",
+    "@xingrz/download2": "^9.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.1",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
