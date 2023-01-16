@@ -67,7 +67,7 @@ async function writeWrapper(
 }
 
 async function debug(message: string) {
-  console.log(message);
+  // console.log(message);
 }
 
 (async () => {
