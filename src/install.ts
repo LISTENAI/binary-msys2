@@ -71,6 +71,9 @@ async function debug(message: string) {
 }
 
 (async () => {
+  if (process.platform !== 'win32') {
+    return;
+  }
 
   try {
     await rm(HOME, { recursive: true });
